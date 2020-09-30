@@ -53,59 +53,59 @@ Thing: Car Wash
  */
 
 /*
-Thing 1)
+Thing 1) Camper Van
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of spare tires
+    2) number of jerry cans 
+    3) number of bumper stickers
+    4) amount of windshield covered in bugs
+    5) number of campers it will sleep
 3 things it can do:
-    1)
-    2)
-    3)
+    1) drive
+    2) pop its top
+    3) guzzle gas
  */
 
 /*
-Thing 2)
+Thing 2) House Boat
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of Engines
+    2) Number of Rooms
+    3) Square footage of Deck
+    4) Length of boat
+    5) Number of life jackets
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Move
+    2) Rock in waves
+    3) Scare away pelicans
  */
 
 /*
-Thing 3)
+Thing 3) Field Recorder
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of Inputs
+    2) Size of SD card
+    3) Gain level
+    4) Weight
+    5) Size
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Record sound
+    2) Playback sound
+    3) Eject SD card
  */
 
 /*
-Thing 4)
+Thing 4) Printer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Amount of Black Ink
+    2) Amount of Color Ink
+    3) Resolution of Scan
+    4) Years until deprication of drivers
+    5) Maximum number of pages in tray
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Print
+    2) Scan
+    3) Jam
  */
 
 
