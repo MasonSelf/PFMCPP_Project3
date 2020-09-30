@@ -108,17 +108,17 @@ Thing 4) Printer
  */
 
 /*
-Thing 10)
+Thing 10) City
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Streets
+    2) Sewer System
+    3) Government
+    4) Buildings
+    5) Parks
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Pass Laws
+    2) Collect Taxes
+    3) Repave Streets
  */
 
 /*
