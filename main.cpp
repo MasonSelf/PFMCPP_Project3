@@ -124,73 +124,73 @@ Thing 4) Printer
  */
 
 /*
-Thing 5)
+Thing 5) Streets
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Depth of Paving
+    2) Number of Lanes
+    3) Width of Street
+    4) Number of Potholes
+    5) Length of Street
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Merge Lanes
+    2) Develop Potholes
+    3) Widen for urban expansion
  */
 
 /*
-Thing 6)
+Thing 6) Sewer System
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Depth of system beneath the ground
+    2) Number of gutters per block
+    3) diameter of pipes
+    4) thickness of cement pipes
+    5) number of rats
 3 things it can do:
-    1)
-    2)
-    3)
+    1) carry sewer materials to destination
+    2) clog
+    3) house rats
  */
 
 /*
-Thing 7)
+Thing 7) Government
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of officials
+    2) Number of office buildings
+    3) Cost of election campaign
+    4) Approval ratings 
+    5) Number of letters sent out per day
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Run election
+    2) Change number of office Buildings
+    3) Appease the people
  */
 
 /*
-Thing 8)
+Thing 8) Buildings
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Age
+    2) Number of stories
+    3) Acreage of lot
+    4) Angle of roof
+    5) Number of windows
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Remodel
+    2) Collapse
+    3) Re-roof
  */
 
 /*
-Thing 9)
+Thing 9) Parks
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Acreage
+    2) Distance from downtown 
+    3) Number of swings
+    4) Number of benches
+    5) Number of Trees
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Change number of swings
+    2) Change number of benches
+    3) Expand Acreage
  */
 
 /*
