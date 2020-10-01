@@ -254,6 +254,205 @@ Thing 10) City
     3) Repave Streets
  */
 
+struct CamperVan
+{
+    // number of spare tires
+    int numSpareTires = 1;
+    //number of jerry cans 
+    int numJerryCans = 2;
+    //number of bumper stickers
+    int numBumpStickers = 44;
+    //amount of windshield covered in bugs
+    float windshieldBugPercentage = 0.7f;
+    //number of campers it will sleep
+    int personCapacity = 3;
+
+    //drive
+    void driveCamper( bool tankHasSomeGas = true );
+    //pop its top
+    void popCamperTop( bool isRaining = false, int outsideTemperature = 70 );
+    //guzzle gas
+    int consumeGas( float gasRemaining, bool airConditioningOn );
+};
+
+struct HouseBoat
+{
+    //Number of Engines
+    int numEngines = 1;
+    //Number of Rooms
+    int numRooms = 2;
+    //Square footage of Deck
+    float deckArea = 44.44f;
+    //Length of boat
+    float boatLength = 20.1f;
+    //Number of life jackets
+    int numLifeJackets = 4;
+
+    //Move
+    void moveBoat( float knotsperGallon, float windknots );
+    //Rock in waves
+    void rockInWaves( int swell = 10 );
+    //Scare away pelicans
+    void scarePelicans( int crewSize = 7, float crewVoiceVolume = 80.1f, float boatSpeed = 30.f);
+};
+
+struct FieldRecorder
+{
+    //Number of Inputs
+    int numInputs = 4;
+    //Size of SD card
+    int storageCapacity = 64;
+    //Gain level
+    float gain = 24.f;
+    //Weight
+    double weight = 0.34298348768768768798798;
+    //Size
+    float length = 10.1f;
+
+    struct Mic
+    {
+        std::string pickUpPattern = "hyperCardiod";
+        std::string manufacturer = "shure";
+        bool requiresPhantom = true;
+        float micLength = 7.6f;
+        float capsuleDiameter = 0.4f;
+
+        void registerMicWithManufacterer ( double serialNum );
+        void repairMic( bool micWorks = false );
+        void positionMic( float distancefromSource, float cableLength );   
+    };
+
+    //Record sound
+    void record( Mic mic, float remainingStorage );
+    //Playback sound
+    float playback( float samples, float speakerVolume = 0.0f );
+    //Eject SD card
+    void ejectSD( bool ejectButtonPressed = true );
+ 
+    Mic lav;
+};
+
+struct Printer
+{
+    // Amount of Black Ink
+    float blackInkAmount = 0.9f;
+    //Amount of Color Ink
+    float colorInkAmount = 0.9f;
+    //Resolution of Scan
+    double scanRes = 1000.1013813813;
+    //Years until deprication of drivers
+    int yearsRemaining = 1;
+    //Maximum number of pages in tray
+    int pageMax = 100;
+
+    struct Paper
+    {
+        float paperWidth = 9.5f;
+        float paperHeight = 11.f;
+        double paperThickness = 0.00001;
+        std::string material = "woodPulp";
+        bool paperCreased = false;
+
+        void foldPaper( float foldStartX, float foldStartY, float foldEndX, float foldEndY );
+        void loadIntoPrinter( float width = 9.5f, float height = 11.f);
+        void wastePaper( bool printLayoutIsAppropriate = false);
+    };
+
+    //Print
+    void print( bool paperAvailable = true, bool documentReceived = true);
+    //Scan
+    float scanDoc( float docWidth, float docHeight);
+    //Jam
+    void jamPrinter( int numPages = 101, bool errorMessageReceived = true, float sensorTemp = 90.1f ); 
+
+    Paper jamFreeEdition;
+};
+/*
+struct Street
+{
+5 properties:
+    1) Depth of Paving
+    2) Number of Lanes
+    3) Width of Street
+    4) Number of Potholes
+    5) Length of Street
+3 things it can do:
+    1) Merge Lanes
+    2) Develop Potholes
+    3) Widen for urban expansion
+};
+
+struct SewerSystem
+{
+5 properties:
+    1) Depth of system beneath the ground
+    2) Number of gutters per block
+    3) diameter of pipes
+    4) thickness of cement pipes
+    5) number of rats
+3 things it can do:
+    1) carry sewer materials to destination
+    2) clog
+    3) house rats
+};
+
+struct Government
+{
+5 properties:
+    1) Number of officials
+    2) Number of office buildings
+    3) Cost of election campaign
+    4) Approval ratings 
+    5) Number of letters sent out per day
+3 things it can do:
+    1) Run election
+    2) Change number of office Buildings
+    3) Appease the people
+};
+
+struct Building
+{
+5 properties:
+    1) Age
+    2) Number of stories
+    3) Acreage of lot
+    4) Angle of roof
+    5) Number of windows
+3 things it can do:
+    1) Remodel
+    2) Collapse
+    3) Re-roof
+};
+
+struct Park
+{
+5 properties:
+    1) Acreage
+    2) Distance from downtown 
+    3) Number of swings
+    4) Number of benches
+    5) Number of Trees
+3 things it can do:
+    1) Change number of swings
+    2) Change number of benches
+    3) Expand Acreage
+};
+
+struct City
+{}
+5 properties:
+    1) Streets
+    2) Sewer System
+    3) Government
+    4) Buildings
+    5) Parks
+3 things it can do:
+    1) Pass Laws
+    2) Collect Taxes
+    3) Repave Streets
+};
+
+*/
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
