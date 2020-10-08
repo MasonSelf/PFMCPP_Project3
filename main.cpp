@@ -114,145 +114,6 @@ struct CarWash //                                   1) define an empty struct fo
 };
 
 
-/*
-Thing 1) Camper Van
-5 properties:
-    1) number of spare tires
-    2) number of jerry cans 
-    3) number of bumper stickers
-    4) amount of windshield covered in bugs
-    5) number of campers it will sleep
-3 things it can do:
-    1) drive
-    2) pop its top
-    3) guzzle gas
- */
-
-/*
-Thing 2) House Boat
-5 properties:
-    1) Number of Engines
-    2) Number of Rooms
-    3) Square footage of Deck
-    4) Length of boat
-    5) Number of life jackets
-3 things it can do:
-    1) Move
-    2) Rock in waves
-    3) Scare away pelicans
- */
-
-/*
-Thing 3) Field Recorder
-5 properties:
-    1) Number of Inputs
-    2) Size of SD card
-    3) Gain level
-    4) Weight
-    5) Size
-3 things it can do:
-    1) Record sound
-    2) Playback sound
-    3) Eject SD card
- */
-
-/*
-Thing 4) Printer
-5 properties:
-    1) Amount of Black Ink
-    2) Amount of Color Ink
-    3) Resolution of Scan
-    4) Years until deprication of drivers
-    5) Maximum number of pages in tray
-3 things it can do:
-    1) Print
-    2) Scan
-    3) Jam
- */
-
-/*
-Thing 5) Streets
-5 properties:
-    1) Depth of Paving
-    2) Number of Lanes
-    3) Width of Street
-    4) Number of Potholes
-    5) Length of Street
-3 things it can do:
-    1) Merge Lanes
-    2) Develop Potholes
-    3) Widen for urban expansion
- */
-
-/*
-Thing 6) Sewer System
-5 properties:
-    1) Depth of system beneath the ground
-    2) Number of gutters per block
-    3) diameter of pipes
-    4) thickness of cement pipes
-    5) number of rats
-3 things it can do:
-    1) carry sewer materials to destination
-    2) clog
-    3) house rats
- */
-
-/*
-Thing 7) Government
-5 properties:
-    1) Number of officials
-    2) Number of office buildings
-    3) Cost of election campaign
-    4) Approval ratings 
-    5) Number of letters sent out per day
-3 things it can do:
-    1) Run election
-    2) Change number of office Buildings
-    3) Appease the people
- */
-
-/*
-Thing 8) Buildings
-5 properties:
-    1) Age
-    2) Number of stories
-    3) Acreage of lot
-    4) Angle of roof
-    5) Number of windows
-3 things it can do:
-    1) Remodel
-    2) Collapse
-    3) Re-roof
- */
-
-/*
-Thing 9) Parks
-5 properties:
-    1) Acreage
-    2) Distance from downtown 
-    3) Number of swings
-    4) Number of benches
-    5) Number of Trees
-3 things it can do:
-    1) Change number of swings
-    2) Change number of benches
-    3) Expand Acreage
- */
-
-/*
-Thing 10) City
-5 properties:
-    1) Streets
-    2) Sewer System
-    3) Government
-    4) Buildings
-    5) Parks
-3 things it can do:
-    1) Pass Laws
-    2) Collect Taxes
-    3) Repave Streets
- */
 
 struct CamperVan
 {
@@ -367,92 +228,134 @@ struct Printer
 
     Paper jamFreeEdition;
 };
-/*
+
 struct Street
 {
-5 properties:
-    1) Depth of Paving
-    2) Number of Lanes
-    3) Width of Street
-    4) Number of Potholes
-    5) Length of Street
-3 things it can do:
-    1) Merge Lanes
-    2) Develop Potholes
-    3) Widen for urban expansion
+    //Depth of Paving
+    float pavementDepth = 1.1f;
+    //Number of Lanes
+    int numLanes = 4;
+    //Width of Street
+    float streetWidth = 25.7f;
+    //Number of Potholes
+    int numPotholes = 9;
+    //Length of Street
+    int streetLength = 4000;
+
+    //Merge Lanes
+    int mergeLanes( int currentLanes = 3, int targetLanes = 2 );
+    //Develop Potholes
+    int addPotholes( int currentPotholes = 1, bool winterVibe = true );
+    //Widen for urban expansion
+    void widenStreet( int lanes = 2, float width = 25.7f, int dailyPopulationGrowth = 40 );
 };
 
 struct SewerSystem
 {
-5 properties:
-    1) Depth of system beneath the ground
-    2) Number of gutters per block
-    3) diameter of pipes
-    4) thickness of cement pipes
-    5) number of rats
-3 things it can do:
-    1) carry sewer materials to destination
-    2) clog
-    3) house rats
+    //Depth of system beneath the ground
+    float sewerDepth = 10.0f;
+    //Number of gutters per block
+    int gutterCount = 4;
+    //diameter of pipes
+    float pipeDiameter = 7.9f;
+    //thickness of cement pipes
+    float pipeThickness = 0.7f;
+    //number of rats
+    int ratPopulation = 1000;
+
+    //carry sewer materials to destination
+    void deliverMaterials( bool hasRained = true );
+    //clog
+    void sewerClog( int numLeavesInGutter = 44100, float mudVolume = 96000.0f );
+    //house rats
+    void provideRatHousing( int sticks = 48000 );
 };
 
 struct Government
 {
-5 properties:
-    1) Number of officials
-    2) Number of office buildings
-    3) Cost of election campaign
-    4) Approval ratings 
-    5) Number of letters sent out per day
-3 things it can do:
-    1) Run election
-    2) Change number of office Buildings
-    3) Appease the people
+    //Number of officials
+    int numOfficials = 33;
+    //Number of office buildings
+    int numOffices = 5;
+    //Cost of election campaign
+    float campaignCost = 100000.22f;
+    //Approval ratings 
+    double approvalRating = 0.66;
+    //Number of letters sent out per day
+    int dailyLetterOutput = 441000;
+
+    //Run election
+    void election( float cost = 700342.99f, int numRallies = 7 );
+    //Change number of office Buildings
+    int changeNumOffice( int currentNum = 4, int desiredDiff = -1 );
+    //Appease the people
+    void appeasePeople( float taxRate = 0.3f, float govSpending = 1000000.11f );
 };
 
 struct Building
 {
-5 properties:
-    1) Age
-    2) Number of stories
-    3) Acreage of lot
-    4) Angle of roof
-    5) Number of windows
-3 things it can do:
-    1) Remodel
-    2) Collapse
-    3) Re-roof
+    //Age
+    int buildingAge = 50;
+    //Number of stories
+    int buildingStories = 12;
+    //Acreage of lot
+    float lotAcreage = 1.2f;
+    //Angle of roof
+    float roofAngle = 30.33f;
+    //Number of windows
+    int numWindows = 100;
+
+    //Remodel
+    void remodel( float budget = 80000.0f, bool committeeAproval = true );
+    //Collapse
+    void buildingCollapse( float age = 100, float earthquakeMag = 5.0f );
+    //Re-roof
+    void newRoof( float angle = 20.5f );
 };
 
 struct Park
 {
-5 properties:
-    1) Acreage
-    2) Distance from downtown 
-    3) Number of swings
-    4) Number of benches
-    5) Number of Trees
-3 things it can do:
-    1) Change number of swings
-    2) Change number of benches
-    3) Expand Acreage
+    //Acreage
+    float acreage = 100.1f;
+    //Distance from downtown
+    float distanceFromDownton = 5.5f; 
+    //Number of swings
+    int numSwings = 12;
+    //Number of benches
+    int numBenches = 30;
+    //Number of Trees
+    int numTrees = 400;
+
+    //Change number of swings
+    int swingNumChange( int currentNum = 12, float budget = 500.0f );
+    //Change number of benches
+    int benchNumChange( int currentNum = 30, float budget = 500.0f ); 
+    //Expand Acreage
+    float expandAcreage( float currentSize = 100.1f, float additionSize = 12.5f );
 };
 
 struct City
-{}
-5 properties:
-    1) Streets
-    2) Sewer System
-    3) Government
-    4) Buildings
-    5) Parks
-3 things it can do:
-    1) Pass Laws
-    2) Collect Taxes
-    3) Repave Streets
+{
+    //Streets
+    Street magnolia;
+    //Sewer System
+    SewerSystem metro;
+    //Government
+    Government cityGov;
+    //Buildings
+    Building bankBuilding;
+    //Parks
+    Park centennial;
+
+    //Pass Laws
+    void newLaw( Government );
+    //Collect Taxes
+    float collectTaxes( Building, float acreageTax );
+    //Repave Streets
+    void repaveStreet( Street, float newDepth = 2.4f );
 };
 
-*/
+
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
