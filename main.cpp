@@ -368,6 +368,27 @@ struct Street
     void widenStreet( int lanes = 2, float width = 25.7f, int dailyPopulationGrowth = 40 );
 };
 
+int mergeLanes( int currentLanes, int targetLanes )
+{
+    currentLanes = targetLanes;
+    return currentLanes;
+}
+
+int addPotHoles( int currentPotholes, bool winterVibe )
+{
+    if ( winterVibe ) currentPotholes += 3;
+    return currentPotholes;
+}
+
+void widenStreet( int lanes, float width, int dailyPopulationGrowth )
+{
+    int laneAddition = dailyPopulationGrowth / 5;
+    lanes += laneAddition;
+    width += lanes * 10.f;
+    printf("street is appropriately widened");
+}
+
+
 struct SewerSystem
 {
     float sewerDepth = 10.0f;
@@ -380,6 +401,22 @@ struct SewerSystem
     void sewerClog( int numLeavesInGutter = 44100, float mudVolume = 96000.0f );
     void provideRatHousing( int sticks = 48000 );
 };
+
+void deliverMaterials( bool hasRained )
+{
+    if (hasRained == false ) return;
+}
+
+void sewerClog ( int numLeavesInGutter, float mudVolume )
+{
+    float clogSeverity = (numLeavesInGutter / 40000) - (mudVolume / 40000 );
+}
+
+void provideRatHousing( int sticks )
+{
+    int potentialNumHouses = sticks / 100;
+}
+
 
 struct Government
 {
@@ -394,6 +431,22 @@ struct Government
     void appeasePeople( float taxRate = 0.3f, float govSpending = 1000000.11f );
 };
 
+void election( float cost, int numRallies )
+{
+    if ( cost > 10000 && numRallies < 4 ) printf("these folks are lazy!");
+}
+
+int changNumOffice( int currentNum, int desiredDiff )
+{
+    return currentNum + desiredDiff;
+}
+
+void appeasePeople( float taxRate, float govSpending )
+{
+    if ( taxRate < .2 && govSpending < 100000 ) printf("the people are appeased");
+}
+
+
 struct Building
 {
     int buildingAge = 50;
@@ -406,6 +459,25 @@ struct Building
     void buildingCollapse( float age = 100, float earthquakeMag = 5.0f );
     void newRoof( float angle = 20.5f );
 };
+
+void remodel( float budget, bool committeAproval )
+{
+    float hipness;
+    if (committeAproval == true ) hipness = budget * .7f;
+    else hipness = 0.0f;
+}
+
+void buildingCollapose(float age, float earthquakeMag )
+{
+    float fragility = age * .2f;
+    if (fragility < earthquakeMag ) printf("doom");
+}
+
+void newRoof( float angle )
+{
+    if (angle == 0.0f ) printf("Are you sure this won't collect rain?");
+}
+
 
 struct Park
 {
@@ -420,6 +492,26 @@ struct Park
     float expandAcreage( float currentSize = 100.1f, float additionSize = 12.5f );
 };
 
+int swingNumChange( int currentNum, float budget )
+{
+    int addition = budget / 100;
+    currentNum += addition;
+    return currentNum;
+}
+
+int benchNumChange( int currentNum, float budget )
+{
+    int addition = budget / 50;
+    currentNum += addition;
+    return currentNum;
+}
+
+float expandAcreage( float currentSize, float additionSize )
+{
+    currentSize += additionSize;
+    return currentSize;
+}
+
 struct City
 {
     Street magnolia;
@@ -432,6 +524,21 @@ struct City
     float collectTaxes( Building, float acreageTax );
     void repaveStreet( Street, float newDepth = 2.4f );
 };
+
+void newLaw ( Government gov )
+{
+    if (gov.approvalRating > .5) printf("let's pass this law");
+}
+
+float collectTaxes( Building building, float acreageTax )
+{
+    return building.lotAcreage * acreageTax;
+}
+
+void repaveStreet (Street street, float newDepth )
+{
+    street.pavementDepth = newDepth;
+}
 
 
 /*
