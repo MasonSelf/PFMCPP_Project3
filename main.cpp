@@ -141,6 +141,7 @@ void Person::run( int howFast, bool startWithLeftFoot )
         leftFoot.stepForward();
     }
     distanceTraveled += leftFoot.stepSize(1) + rightFoot.stepSize(2);
+    if ( howFast > 10 ) printf("dang, that's fast");
 }
 void Person::Limb::stepForward()
 {
@@ -409,12 +410,14 @@ void deliverMaterials( bool hasRained )
 
 void sewerClog ( int numLeavesInGutter, float mudVolume )
 {
-    float clogSeverity = (numLeavesInGutter / 40000) - (mudVolume / 40000 );
+    float clogSeverity; 
+    clogSeverity = (numLeavesInGutter / 40000) - (mudVolume / 40000 );
 }
 
 void provideRatHousing( int sticks )
 {
-    int potentialNumHouses = sticks / 100;
+    int potentialNumHouses;
+    potentialNumHouses = sticks / 100;
 }
 
 
