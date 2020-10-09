@@ -142,7 +142,7 @@ void Person::run( int howFast, bool startWithLeftFoot )
     }
     distanceTraveled += leftFoot.stepSize(1) + rightFoot.stepSize(2);
     if ( howFast > 10 ) 
-        printf("dang, that's fast");
+        printf("dang, that's fast"); FIXME use std::cout, not printf() 
 }
 void Person::Limb::stepForward()
 {
@@ -181,13 +181,13 @@ struct CamperVan
 void CamperVan::driveCamper( bool tankHasSomeGas ) 
 {
     if( tankHasSomeGas )
-        printf("driving...");
+        printf("driving..."); FIXME use std::cout, not printf() 
 }
 
 void CamperVan::popCamperTop( bool isRaining, int outsideTemperature )
 {
     if( isRaining == false && outsideTemperature >= 70 )
-        printf("pop the top!");
+        printf("pop the top!"); FIXME use std::cout, not printf() 
 }
 
 int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
@@ -200,7 +200,7 @@ int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
             return 1;
     }
     else 
-        return 0.0f;
+        return 0; 
 }
 
 
@@ -226,14 +226,14 @@ void HouseBoat::moveBoat( float knotsperGallon, float windknots )
 void HouseBoat::rockInWaves( int swell ) 
 {
     if (swell >= 7 ) 
-        printf("oh dear");
+        printf("oh dear"); FIXME use std::cout, not printf() 
 }
 
 void HouseBoat::scarePelicans( int crewSize, float crewVoiceVolume, float boatSpeed )
 {
     float pelicanScareRating = crewVoiceVolume * crewSize * boatSpeed;
     if (pelicanScareRating > 5.0f ) 
-        printf("pelicans are tripping");
+        printf("pelicans are tripping"); FIXME use std::cout, not printf() 
 }
 
 
@@ -267,26 +267,25 @@ struct FieldRecorder
 
 void FieldRecorder::Mic::registerMicWithManufacterer( double serialNum )
 {
-    double registrationForm = 111111;
-    registrationForm = serialNum;
+    std::cout << serialNum << std::endl;
 }
 void FieldRecorder::Mic::repairMic( bool micWorks )
 {
     if (micWorks ) 
-        printf("no problem here");
+        printf("no problem here"); FIXME use std::cout, not printf() 
 }
 void FieldRecorder::Mic::positionMic( float distanceFromSource, float cableLength ) 
 {
     if (distanceFromSource > cableLength ) 
-        printf("we need a longer cable");
+        printf("we need a longer cable"); FIXME use std::cout, not printf() 
 }
 void FieldRecorder::record( FieldRecorder::Mic mic, float remainingStorage ) 
 {
     if ( mic.manufacturer == "shure" ) 
-        printf("this oughta sound good");
+        printf("this oughta sound good"); FIXME use std::cout, not printf() 
     if ( remainingStorage == 0.0f ) 
         return;
-    printf("recording...");
+    printf("recording..."); FIXME use std::cout, not printf() 
 }
 
 float FieldRecorder::playback( float samples, float speakerVolume ) 
@@ -296,7 +295,7 @@ float FieldRecorder::playback( float samples, float speakerVolume )
 void FieldRecorder::ejectSD( bool ejectButtonPressed ) 
 {
     if (ejectButtonPressed == false ) 
-        printf("hey press the eject button");
+        printf("hey press the eject button"); FIXME use std::cout, not printf() 
 }
 
 
@@ -330,49 +329,49 @@ struct Printer
 
 void Printer::Paper::foldPaper( float foldStartX, float foldStartY, float foldEndX, float foldEndY )
 {
-    Printer::Paper::paperWidth = foldEndX - foldStartX;
-    Printer::Paper::paperHeight = foldEndY - foldStartY; 
+    paperWidth = foldEndX - foldStartX; 
+    paperHeight = foldEndY - foldStartY; 
 }
 
 void Printer::Paper::loadIntoPrinter( float width, float height )
 {
     if (width > 9.5f ) 
-        printf("too wide!");
+        printf("too wide!"); FIXME use std::cout, not printf() 
     if (height > 11.f ) 
-        printf("this page may get stuck");
+        printf("this page may get stuck"); FIXME use std::cout, not printf() 
 }
 
 void Printer::Paper::wastePaper( bool printLayoutIsAppropriate )
 {
     if ( printLayoutIsAppropriate ) 
-        printf("no waste here");
+        printf("no waste here"); FIXME use std::cout, not printf() 
 }
 
 void Printer::print( bool paperAvailable, bool documentReceived ) 
 {
     if ( paperAvailable == false ) 
-        printf("need more paper");
+        printf("need more paper"); FIXME use std::cout, not printf() 
     if ( documentReceived == false ) 
-        printf("document not yet received");
+        printf("document not yet received"); FIXME use std::cout, not printf() 
 }
 
 float Printer::scanDoc( float docWidth, float docHeight )
 {
-   float arbitraryDataBit = docWidth * docHeight;
-   return arbitraryDataBit;
+   return docWidth * docHeight; 
 }
  
- void Printer::jamPrinter( int numPages, bool errorMessageReceived, float sensorTemp )
- {
-     if ( numPages > 3 )
-     {
-         if ( errorMessageReceived )
-         {
-             if ( sensorTemp > 100.1f ) 
-                printf("it's jammed :(");
-         }
-     }
- }
+
+void Printer::jamPrinter( int numPages, bool errorMessageReceived, float sensorTemp )
+{
+    if ( numPages > 3 )
+    {
+        if ( errorMessageReceived ) INFO: you can use && to combine all of these if() expressions.  if( expr1 && expr2 && ... )
+        {
+            if ( sensorTemp > 100.1f ) 
+                printf("it's jammed :("); FIXME use std::cout, not printf() 
+        }
+    }
+}
 
 
 struct Street
@@ -390,7 +389,7 @@ struct Street
 
 int Street::mergeLanes( int currentLanes, int targetLanes ) 
 {
-    currentLanes = targetLanes;
+    currentLanes = targetLanes; FIXME why even have currentLanes as a function argument if you're going to overwrite it's value with targetLanes?
     return currentLanes;
 }
 
@@ -406,7 +405,7 @@ void Street::widenStreet( int lanes, float width, int dailyPopulationGrowth )
     int laneAddition = dailyPopulationGrowth / 5;
     lanes += laneAddition;
     width += lanes * 10.f;
-    printf("street is appropriately widened");
+    printf("street is appropriately widened"); FIXME use std::cout, not printf() 
 }
 
 
@@ -426,14 +425,14 @@ struct SewerSystem
 void SewerSystem::deliverMaterials( bool hasRained ) 
 {
     if (hasRained )
-        printf("delivering");
+        printf("delivering"); FIXME use std::cout, not printf() 
 }
 
 void SewerSystem::sewerClog ( int numLeavesInGutter, float mudVolume ) 
 {
-    float clogSeverity = (numLeavesInGutter - mudVolume) / 40000;
+    float clogSeverity = (numLeavesInGutter - mudVolume) / 40000; FIXME use 40000.f when assigning to a float
     if ( clogSeverity > 100.0f )
-        printf("this is bad");
+        printf("this is bad"); FIXME use std::cout, not printf() 
 }
 
 void SewerSystem::provideRatHousing( int sticks ) 
@@ -458,8 +457,8 @@ struct Government
 
 void Government::election( float cost, int numRallies ) 
 {
-    if ( cost > 10000 && numRallies < 4 ) 
-        printf("these folks are lazy!");
+    if ( cost > 10000 && numRallies < 4 ) FIXME you're comparing cost (a float) with an int.
+        printf("these folks are lazy!"); FIXME use std::cout, not printf() 
 }
 
 int Government::changeNumOffice( int currentNum, int desiredDiff ) 
@@ -470,7 +469,7 @@ int Government::changeNumOffice( int currentNum, int desiredDiff )
 void Government::appeasePeople( float taxRate, float govSpending )
 {
     if ( taxRate < .2 && govSpending < 100000 )
-        printf("the people are appeased");
+        printf("the people are appeased"); FIXME use std::cout, not printf() 
 }
 
 
@@ -500,13 +499,13 @@ void Building::buildingCollapse(float age, float earthquakeMag )
 {
     float fragility = age * .2f;
     if (fragility < earthquakeMag ) 
-        printf("doom");
+        printf("doom"); FIXME use std::cout, not printf() 
 }
 
 void Building::newRoof( float angle )
 {
     if (angle == 0.0f ) 
-        printf("Are you sure this won't collect rain?");
+        printf("Are you sure this won't collect rain?"); FIXME use std::cout, not printf() 
 }
 
 
@@ -559,7 +558,7 @@ struct City
 void City::newLaw ( Government gov ) 
 {
     if (gov.approvalRating > .5) 
-        printf("let's pass this law");
+        printf("let's pass this law"); FIXME use std::cout, not printf() 
 }
 
 float City::collectTaxes( Building building, float acreageTax ) 
