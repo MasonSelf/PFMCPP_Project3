@@ -196,11 +196,9 @@ int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
     {
         if ( airConditioningOn ) 
             return 2;
-        else 
-            return 1;
-    }
-    else 
-        return 0; 
+        return 1;
+    } 
+    return 0; 
 }
 
 
@@ -281,10 +279,10 @@ void FieldRecorder::Mic::positionMic( float distanceFromSource, float cableLengt
 }
 void FieldRecorder::record( FieldRecorder::Mic mic, float remainingStorage ) 
 {
-    if ( mic.manufacturer == "shure" ) 
-        std::cout << "this oughta sound good" << std::endl;
     if ( remainingStorage == 0.0f ) 
         return;
+    if ( mic.manufacturer == "shure" ) 
+        std::cout << "this oughta sound good" << std::endl;
     std::cout << "recording..." << std::endl;
 }
 
@@ -357,7 +355,7 @@ void Printer::print( bool paperAvailable, bool documentReceived )
 
 float Printer::scanDoc( float docWidth, float docHeight )
 {
-   return docWidth * docHeight; 
+    return docWidth * docHeight; 
 }
  
 
