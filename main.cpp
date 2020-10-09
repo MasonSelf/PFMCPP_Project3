@@ -108,8 +108,48 @@ struct CarWash
     You'll need to insert the Person struct from the video in the space below.
  */
 
+struct Person
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
 
+    struct Limb
+    {
+        void stepForward();
+        int stepSize( int );
+    };
+    Limb leftFoot;
+    Limb rightFoot;
 
+    void run( int, bool );
+};
+
+void Person::run( int howFast, bool startWithLeftFoot )
+{
+    if( startWithLeftFoot == true)
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTraveled += leftFoot.stepSize(1) + rightFoot.stepSize(2);
+}
+void Person::Limb::stepForward()
+{
+
+}
+int Person::Limb::stepSize( int size )
+{
+    return size;
+}
 
 
  /*
@@ -136,6 +176,28 @@ struct CamperVan
     int consumeGas( float gasRemaining, bool airConditioningOn );
 };
 
+void driveCamper( bool tankHasSomeGas )
+{
+    if( tankHasSomeGas == false) return;
+    else printf("driving...");
+}
+
+void popCamperTop( bool isRaining, int outsideTemperature )
+{
+    if( isRaining == false && outsideTemperature >= 70 ) printf("pop the top!");
+}
+
+int consumeGas( float gasRemaining, bool airConditioningOn )
+{
+    if ( gasRemaining != 0.0f )
+    {
+        if ( airConditioningOn ) return 2;
+        else return 1;
+    }
+    else return 0.0f;
+}
+
+
 struct HouseBoat
 {
     int numEngines = 1;
@@ -148,6 +210,24 @@ struct HouseBoat
     void rockInWaves( int swell = 10 );
     void scarePelicans( int crewSize = 7, float crewVoiceVolume = 80.1f, float boatSpeed = 30.f);
 };
+
+void moveBoat( float knotsperGallon, float windknots )
+{
+    float knotsTravelled = 0.0f;
+    knotsTravelled += knotsperGallon - windknots;
+}
+
+void rockInWaves( int swell )
+{
+    if (swell >= 7 ) printf("oh dear");
+}
+
+void scarePelicans( int crewSize, float crewVoiceVolume, float boatSpeed )
+{
+    float pelicanScareRating = crewVoiceVolume * crewSize * boatSpeed;
+    if (pelicanScareRating > 5.0f ) printf("pelicans are tripping");
+}
+
 
 struct FieldRecorder
 {
@@ -177,6 +257,35 @@ struct FieldRecorder
     Mic lav;
 };
 
+void FieldRecorder::Mic::registerMicWithManufacterer( double serialNum )
+{
+    double registrationForm = 111111;
+    registrationForm = serialNum;
+}
+void FieldRecorder::Mic::repairMic( bool micWorks )
+{
+    if (micWorks ) printf("no problem here");
+}
+void positionMic( float distanceFromSource, float cableLength )
+{
+    if (distanceFromSource > cableLength ) printf("we need a longer cable");
+}
+void record( FieldRecorder::Mic mic, float remainingStorage )
+{
+    if ( mic.manufacturer == "shure" ) printf("this oughta sound good");
+    if ( remainingStorage == 0.0f ) return;
+}
+
+float playback( float samples, float speakerVolume )
+{
+    return samples * speakerVolume;
+}
+void ejectSD( bool ejectButtonPressed )
+{
+    if (ejectButtonPressed == false ) printf("hey press the eject button");
+}
+
+
 struct Printer
 {
     float blackInkAmount = 0.9f;
@@ -200,10 +309,51 @@ struct Printer
 
     void print( bool paperAvailable = true, bool documentReceived = true);
     float scanDoc( float docWidth, float docHeight);
-    void jamPrinter( int numPages = 101, bool errorMessageReceived = true, float sensorTemp = 90.1f ); 
+    void jamPrinter( int numPages = 100, bool errorMessageReceived = false, float sensorTemp = 77.f );
 
     Paper jamFreeEdition;
 };
+
+void Printer::Paper::foldPaper( float foldStartX, float foldStartY, float foldEndX, float foldEndY )
+{
+    Printer::Paper::paperWidth = foldEndX - foldStartX;
+    Printer::Paper::paperHeight = foldEndY - foldStartY; 
+}
+
+void Printer::Paper::loadIntoPrinter( float width, float height )
+{
+    if (width > 9.5f ) printf("too wide!");
+    if (height > 11.f ) printf("this page may get stuck");
+}
+
+void Printer::Paper::wastePaper( bool printLayoutIsAppropriate )
+{
+    if ( printLayoutIsAppropriate ) printf("no waste here");
+}
+
+void print( bool paperAvailable, bool documentReceived )
+{
+    if ( paperAvailable == false ) printf("need more paper");
+    if ( documentReceived == false ) printf("document not yet received");
+}
+
+float scanDoc( float docWidth, float docHeight )
+{
+   float arbitraryDataBit = docWidth * docHeight;
+   return arbitraryDataBit;
+}
+
+ void jamPrinter( int numPages, bool errorMessageReceived, float sensorTemp )
+ {
+     if ( numPages > 3 )
+     {
+         if ( errorMessageReceived )
+         {
+             if ( sensorTemp > 100.1f ) printf("it's jammed :(");
+         }
+     }
+ }
+
 
 struct Street
 {
