@@ -141,7 +141,8 @@ void Person::run( int howFast, bool startWithLeftFoot )
         leftFoot.stepForward();
     }
     distanceTraveled += leftFoot.stepSize(1) + rightFoot.stepSize(2);
-    if ( howFast > 10 ) printf("dang, that's fast");
+    if ( howFast > 10 ) 
+        printf("dang, that's fast");
 }
 void Person::Limb::stepForward()
 {
@@ -177,25 +178,29 @@ struct CamperVan
     int consumeGas( float gasRemaining, bool airConditioningOn );
 };
 
-void driveCamper( bool tankHasSomeGas )
+void CamperVan::driveCamper( bool tankHasSomeGas ) 
 {
-    if( tankHasSomeGas == false) return;
-    else printf("driving...");
+    if( tankHasSomeGas )
+        printf("driving...");
 }
 
-void popCamperTop( bool isRaining, int outsideTemperature )
+void CamperVan::popCamperTop( bool isRaining, int outsideTemperature )
 {
-    if( isRaining == false && outsideTemperature >= 70 ) printf("pop the top!");
+    if( isRaining == false && outsideTemperature >= 70 )
+        printf("pop the top!");
 }
 
-int consumeGas( float gasRemaining, bool airConditioningOn )
+int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
 {
     if ( gasRemaining != 0.0f )
     {
-        if ( airConditioningOn ) return 2;
-        else return 1;
+        if ( airConditioningOn ) 
+            return 2;
+        else 
+            return 1;
     }
-    else return 0.0f;
+    else 
+        return 0.0f;
 }
 
 
@@ -212,21 +217,23 @@ struct HouseBoat
     void scarePelicans( int crewSize = 7, float crewVoiceVolume = 80.1f, float boatSpeed = 30.f);
 };
 
-void moveBoat( float knotsperGallon, float windknots )
+void HouseBoat::moveBoat( float knotsperGallon, float windknots ) 
 {
     float knotsTravelled = 0.0f;
     knotsTravelled += knotsperGallon - windknots;
 }
 
-void rockInWaves( int swell )
+void HouseBoat::rockInWaves( int swell ) 
 {
-    if (swell >= 7 ) printf("oh dear");
+    if (swell >= 7 ) 
+        printf("oh dear");
 }
 
-void scarePelicans( int crewSize, float crewVoiceVolume, float boatSpeed )
+void HouseBoat::scarePelicans( int crewSize, float crewVoiceVolume, float boatSpeed )
 {
     float pelicanScareRating = crewVoiceVolume * crewSize * boatSpeed;
-    if (pelicanScareRating > 5.0f ) printf("pelicans are tripping");
+    if (pelicanScareRating > 5.0f ) 
+        printf("pelicans are tripping");
 }
 
 
@@ -265,25 +272,31 @@ void FieldRecorder::Mic::registerMicWithManufacterer( double serialNum )
 }
 void FieldRecorder::Mic::repairMic( bool micWorks )
 {
-    if (micWorks ) printf("no problem here");
+    if (micWorks ) 
+        printf("no problem here");
 }
-void positionMic( float distanceFromSource, float cableLength )
+void FieldRecorder::Mic::positionMic( float distanceFromSource, float cableLength ) 
 {
-    if (distanceFromSource > cableLength ) printf("we need a longer cable");
+    if (distanceFromSource > cableLength ) 
+        printf("we need a longer cable");
 }
-void record( FieldRecorder::Mic mic, float remainingStorage )
+void FieldRecorder::record( FieldRecorder::Mic mic, float remainingStorage ) 
 {
-    if ( mic.manufacturer == "shure" ) printf("this oughta sound good");
-    if ( remainingStorage == 0.0f ) return;
+    if ( mic.manufacturer == "shure" ) 
+        printf("this oughta sound good");
+    if ( remainingStorage == 0.0f ) 
+        return;
+    printf("recording...");
 }
 
-float playback( float samples, float speakerVolume )
+float FieldRecorder::playback( float samples, float speakerVolume ) 
 {
     return samples * speakerVolume;
 }
-void ejectSD( bool ejectButtonPressed )
+void FieldRecorder::ejectSD( bool ejectButtonPressed ) 
 {
-    if (ejectButtonPressed == false ) printf("hey press the eject button");
+    if (ejectButtonPressed == false ) 
+        printf("hey press the eject button");
 }
 
 
@@ -323,34 +336,40 @@ void Printer::Paper::foldPaper( float foldStartX, float foldStartY, float foldEn
 
 void Printer::Paper::loadIntoPrinter( float width, float height )
 {
-    if (width > 9.5f ) printf("too wide!");
-    if (height > 11.f ) printf("this page may get stuck");
+    if (width > 9.5f ) 
+        printf("too wide!");
+    if (height > 11.f ) 
+        printf("this page may get stuck");
 }
 
 void Printer::Paper::wastePaper( bool printLayoutIsAppropriate )
 {
-    if ( printLayoutIsAppropriate ) printf("no waste here");
+    if ( printLayoutIsAppropriate ) 
+        printf("no waste here");
 }
 
-void print( bool paperAvailable, bool documentReceived )
+void Printer::print( bool paperAvailable, bool documentReceived ) 
 {
-    if ( paperAvailable == false ) printf("need more paper");
-    if ( documentReceived == false ) printf("document not yet received");
+    if ( paperAvailable == false ) 
+        printf("need more paper");
+    if ( documentReceived == false ) 
+        printf("document not yet received");
 }
 
-float scanDoc( float docWidth, float docHeight )
+float Printer::scanDoc( float docWidth, float docHeight )
 {
    float arbitraryDataBit = docWidth * docHeight;
    return arbitraryDataBit;
 }
-
- void jamPrinter( int numPages, bool errorMessageReceived, float sensorTemp )
+ 
+ void Printer::jamPrinter( int numPages, bool errorMessageReceived, float sensorTemp )
  {
      if ( numPages > 3 )
      {
          if ( errorMessageReceived )
          {
-             if ( sensorTemp > 100.1f ) printf("it's jammed :(");
+             if ( sensorTemp > 100.1f ) 
+                printf("it's jammed :(");
          }
      }
  }
@@ -369,19 +388,20 @@ struct Street
     void widenStreet( int lanes = 2, float width = 25.7f, int dailyPopulationGrowth = 40 );
 };
 
-int mergeLanes( int currentLanes, int targetLanes )
+int Street::mergeLanes( int currentLanes, int targetLanes ) 
 {
     currentLanes = targetLanes;
     return currentLanes;
 }
 
-int addPotHoles( int currentPotholes, bool winterVibe )
+int Street::addPotholes( int currentPotholes, bool winterVibe ) 
 {
-    if ( winterVibe ) currentPotholes += 3;
+    if ( winterVibe ) 
+        currentPotholes += 3;
     return currentPotholes;
 }
 
-void widenStreet( int lanes, float width, int dailyPopulationGrowth )
+void Street::widenStreet( int lanes, float width, int dailyPopulationGrowth ) 
 {
     int laneAddition = dailyPopulationGrowth / 5;
     lanes += laneAddition;
@@ -403,21 +423,23 @@ struct SewerSystem
     void provideRatHousing( int sticks = 48000 );
 };
 
-void deliverMaterials( bool hasRained )
+void SewerSystem::deliverMaterials( bool hasRained ) 
 {
-    if (hasRained == false ) return;
+    if (hasRained )
+        printf("delivering");
 }
 
-void sewerClog ( int numLeavesInGutter, float mudVolume )
+void SewerSystem::sewerClog ( int numLeavesInGutter, float mudVolume ) 
 {
-    float clogSeverity; 
-    clogSeverity = (numLeavesInGutter / 40000) - (mudVolume / 40000 );
+    float clogSeverity = (numLeavesInGutter - mudVolume) / 40000;
+    if ( clogSeverity > 100.0f )
+        printf("this is bad");
 }
 
-void provideRatHousing( int sticks )
+void SewerSystem::provideRatHousing( int sticks ) 
 {
-    int potentialNumHouses;
-    potentialNumHouses = sticks / 100;
+    int potentialNumHouses = sticks / 100;
+    std::cout << potentialNumHouses << std::endl;
 }
 
 
@@ -434,19 +456,21 @@ struct Government
     void appeasePeople( float taxRate = 0.3f, float govSpending = 1000000.11f );
 };
 
-void election( float cost, int numRallies )
+void Government::election( float cost, int numRallies ) 
 {
-    if ( cost > 10000 && numRallies < 4 ) printf("these folks are lazy!");
+    if ( cost > 10000 && numRallies < 4 ) 
+        printf("these folks are lazy!");
 }
 
-int changNumOffice( int currentNum, int desiredDiff )
+int Government::changeNumOffice( int currentNum, int desiredDiff ) 
 {
     return currentNum + desiredDiff;
 }
 
-void appeasePeople( float taxRate, float govSpending )
+void Government::appeasePeople( float taxRate, float govSpending )
 {
-    if ( taxRate < .2 && govSpending < 100000 ) printf("the people are appeased");
+    if ( taxRate < .2 && govSpending < 100000 )
+        printf("the people are appeased");
 }
 
 
@@ -463,22 +487,26 @@ struct Building
     void newRoof( float angle = 20.5f );
 };
 
-void remodel( float budget, bool committeAproval )
+void Building::remodel( float budget, bool committeAproval )
 {
     float hipness;
-    if (committeAproval == true ) hipness = budget * .7f;
-    else hipness = 0.0f;
+    if (committeAproval == true ) 
+        hipness = budget * .7f;
+    else 
+        hipness = 0.0f;
 }
 
-void buildingCollapose(float age, float earthquakeMag )
+void Building::buildingCollapse(float age, float earthquakeMag )
 {
     float fragility = age * .2f;
-    if (fragility < earthquakeMag ) printf("doom");
+    if (fragility < earthquakeMag ) 
+        printf("doom");
 }
 
-void newRoof( float angle )
+void Building::newRoof( float angle )
 {
-    if (angle == 0.0f ) printf("Are you sure this won't collect rain?");
+    if (angle == 0.0f ) 
+        printf("Are you sure this won't collect rain?");
 }
 
 
@@ -495,21 +523,21 @@ struct Park
     float expandAcreage( float currentSize = 100.1f, float additionSize = 12.5f );
 };
 
-int swingNumChange( int currentNum, float budget )
+int Park::swingNumChange( int currentNum, float budget )
 {
     int addition = budget / 100;
     currentNum += addition;
     return currentNum;
 }
 
-int benchNumChange( int currentNum, float budget )
+int Park::benchNumChange( int currentNum, float budget ) 
 {
     int addition = budget / 50;
     currentNum += addition;
     return currentNum;
 }
 
-float expandAcreage( float currentSize, float additionSize )
+float Park::expandAcreage( float currentSize, float additionSize ) 
 {
     currentSize += additionSize;
     return currentSize;
@@ -528,17 +556,18 @@ struct City
     void repaveStreet( Street, float newDepth = 2.4f );
 };
 
-void newLaw ( Government gov )
+void City::newLaw ( Government gov ) 
 {
-    if (gov.approvalRating > .5) printf("let's pass this law");
+    if (gov.approvalRating > .5) 
+        printf("let's pass this law");
 }
 
-float collectTaxes( Building building, float acreageTax )
+float City::collectTaxes( Building building, float acreageTax ) 
 {
     return building.lotAcreage * acreageTax;
 }
 
-void repaveStreet (Street street, float newDepth )
+void City::repaveStreet (Street street, float newDepth )
 {
     street.pavementDepth = newDepth;
 }
