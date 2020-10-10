@@ -125,6 +125,7 @@ void HouseBoat::moveBoat( float knotsperGallon, float windknots )
 {
     float knotsTravelled = 0.0f;
     knotsTravelled += knotsperGallon - windknots;
+    std::cout << "knots travelled: " << knotsTravelled << std::endl;
 }
 
 void HouseBoat::rockInWaves( int swell ) 
@@ -509,4 +510,16 @@ int main()
 {
     Example::main();
     std::cout << "good to go!" << std::endl;
+
+    CamperVan sprinter;
+    sprinter.consumeGas(0.f, true);
+
+    HouseBoat raft;
+    raft.moveBoat(.5f, .1f);
+
+    Printer canon;
+    std::cout << "the size of your scan document is " << canon.scanDoc(9.5f, 11.f) << std::endl;
+
+    Park centennial;
+    std::cout << "Are there enough benches for the event? " << (centennial.benchNumChange(20, 100) > 21 ? "Thankfully yes" : "We need a bigger budget for more benches") << "\n";
 }
