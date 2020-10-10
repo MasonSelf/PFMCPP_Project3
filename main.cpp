@@ -71,11 +71,14 @@ struct CamperVan
     int numBumpStickers = 44;
     float windshieldBugPercentage = 0.7f;
     int personCapacity = 3;
+    CamperVan();
 
     void driveCamper( bool tankHasSomeGas = true );
     void popCamperTop( bool isRaining = false, int outsideTemperature = 70 );
     int consumeGas( float gasRemaining, bool airConditioningOn );
 };
+
+CamperVan::CamperVan(){}
 
 void CamperVan::driveCamper( bool tankHasSomeGas ) 
 {
@@ -96,7 +99,8 @@ int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
         if ( airConditioningOn ) 
             return 2;
         return 1;
-    } 
+    }
+    std::cout << "no gas, bro" << std::endl; 
     return 0; 
 }
 
@@ -108,11 +112,14 @@ struct HouseBoat
     float deckArea = 44.44f;
     float boatLength = 20.1f;
     int numLifeJackets = 4;
+    HouseBoat();
 
     void moveBoat( float knotsperGallon, float windknots );
     void rockInWaves( int swell = 10 );
     void scarePelicans( int crewSize = 7, float crewVoiceVolume = 80.1f, float boatSpeed = 30.f);
 };
+
+HouseBoat::HouseBoat(){}
 
 void HouseBoat::moveBoat( float knotsperGallon, float windknots ) 
 {
@@ -141,6 +148,7 @@ struct FieldRecorder
     float gain = 24.f;
     double weight = 0.34298348768768768798798;
     float length = 10.1f;
+    FieldRecorder();
 
     struct Mic
     {
@@ -161,6 +169,8 @@ struct FieldRecorder
  
     Mic lav;
 };
+
+FieldRecorder::FieldRecorder(){}
 
 void FieldRecorder::Mic::registerMicWithManufacterer( double serialNum )
 {
@@ -203,6 +213,7 @@ struct Printer
     double scanRes = 1000.1013813813;
     int yearsRemaining = 1;
     int pageMax = 100;
+    Printer();
 
     struct Paper
     {
@@ -223,6 +234,8 @@ struct Printer
 
     Paper jamFreeEdition;
 };
+
+Printer::Printer(){}
 
 void Printer::Paper::foldPaper( float foldStartX, float foldStartY, float foldEndX, float foldEndY )
 {
@@ -272,6 +285,7 @@ struct Street
     float streetWidth = 25.7f;
     int numPotholes = 9;
     int streetLength = 4000;
+    Street();
 
     int mergeLanes( int targetLanes = 2 );
     int addPotholes( int currentPotholes = 1, bool winterVibe = true );
@@ -298,7 +312,7 @@ void Street::widenStreet( int lanes, float width, int dailyPopulationGrowth )
     width += lanes * 10.f;
     std::cout << "street is appropriately widened" << std::endl;
 }
-
+Street::Street(){}
 
 struct SewerSystem
 {
@@ -307,11 +321,14 @@ struct SewerSystem
     float pipeDiameter = 7.9f;
     float pipeThickness = 0.7f;
     int ratPopulation = 1000;
+    SewerSystem();
 
     void deliverMaterials( bool hasRained = true );
     void sewerClog( int numLeavesInGutter = 44100, float mudVolume = 96000.0f );
     void provideRatHousing( int sticks = 48000 );
 };
+
+SewerSystem::SewerSystem(){}
 
 void SewerSystem::deliverMaterials( bool hasRained ) 
 {
@@ -340,11 +357,14 @@ struct Government
     float campaignCost = 100000.22f;
     float approvalRating = 0.66f; 
     int dailyLetterOutput = 441000;
+    Government();
 
     void election( float cost = 700342.99f, int numRallies = 7 );
     int changeNumOffice( int currentNum = 4, int desiredDiff = -1 );
     void appeasePeople( float taxRate = 0.3f, float govSpending = 1000000.11f );
 };
+
+Government::Government(){}
 
 void Government::election( float cost, int numRallies ) 
 {
@@ -371,6 +391,7 @@ struct Building
     float lotAcreage = 1.2f;
     float roofAngle = 30.33f;
     int numWindows = 100;
+    Building();
 
     void remodel( float budget = 80000.0f, bool committeeAproval = true );
     void buildingCollapse( float age = 100, float earthquakeMag = 5.0f );
@@ -398,7 +419,7 @@ void Building::newRoof( float angle )
     if (angle == 0.0f ) 
         std::cout << "Are you sure this won't collect rain?" << std::endl;
 }
-
+Building::Building(){}
 
 struct Park
 {
@@ -407,11 +428,14 @@ struct Park
     int numSwings = 12;
     int numBenches = 30;
     int numTrees = 400;
+    Park();
 
     int swingNumChange( int currentNum = 12, int budget = 500 );
     int benchNumChange( int currentNum = 30, int budget = 500 ); 
     float expandAcreage( float currentSize = 100.1f, float additionSize = 12.5f );
 };
+
+Park::Park(){}
 
 int Park::swingNumChange( int currentNum, int budget )
 {
@@ -440,11 +464,14 @@ struct City
     Government cityGov;
     Building bankBuilding;
     Park centennial;
+    City();
 
     void newLaw( Government );
     float collectTaxes( Building, float acreageTax );
     void repaveStreet( Street, float newDepth = 2.4f );
 };
+
+City::City(){}
 
 void City::newLaw ( Government gov ) 
 {
