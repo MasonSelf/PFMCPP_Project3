@@ -142,7 +142,7 @@ struct HouseBoat
     };
     ReturnToShore getThereFunction ( int curDistance )
     {
-        for ( int i = curDistance; i >= 0; i-- )
+        for ( int i = curDistance; i > 0; i-- )
         {
             std::cout << "distance left: " << i << "\n";
             if (i <= 1 )
@@ -572,6 +572,8 @@ int main()
 
     HouseBoat raft;
     raft.getThereFunction(5);
+    raft.getThereFunction(0);
+    
     // raft.moveBoat(.5f, .1f);
 
     // Printer canon;
