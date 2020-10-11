@@ -42,11 +42,11 @@ int main()
 
 struct CamperVan
 {
-    int numSpareTires = 1;
-    int numJerryCans = 2;
-    int numBumpStickers = 44;
-    float windshieldBugPercentage = 0.7f;
-    int personCapacity = 3;
+    int numSpareTires { 1 };
+    int numJerryCans { 2 };
+    int numBumpStickers = { 44 };
+    float windshieldBugPercentage { 0.7f };
+    int personCapacity { 3 };
     CamperVan();
 
     void driveCamper( bool tankHasSomeGas = true );
@@ -66,6 +66,8 @@ void CamperVan::popCamperTop( bool isRaining, int outsideTemperature )
 {
     if( isRaining == false && outsideTemperature >= 70 )
         std::cout << "pop the top!" << std::endl;
+    if ( isRaining )
+        std::cout << "don't pop the top, but the good news is that our windshield bug percentage, which is currently " << windshieldBugPercentage << " may go down because it is raining" << std::endl;
 }
 
 int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
@@ -73,7 +75,10 @@ int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
     if ( gasRemaining != 0.0f )
     {
         if ( airConditioningOn ) 
-            return 2;
+            {
+                std::cout << "you've consumed 2 gallons of gas. consider either turning your ac off, or taking person capacity (" << personCapacity << "} down to save feul." << std::endl;
+                return 2;
+            }
         return 1;
     }
     std::cout << "no gas, bro" << std::endl; 
@@ -83,11 +88,8 @@ int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
 
 struct HouseBoat
 {
-    int numEngines = 1;
-    int numRooms = 2;
-    float deckArea = 44.44f;
-    float boatLength = 20.1f;
-    int numLifeJackets = 4;
+    int numEngines, numRooms, numLifeJackets;
+    float deckArea, boatLength;
     HouseBoat();
 
     void moveBoat( float knotsperGallon, float windknots );
@@ -95,7 +97,15 @@ struct HouseBoat
     void scarePelicans( int crewSize = 7, float crewVoiceVolume = 80.1f, float boatSpeed = 30.f);
 };
 
-HouseBoat::HouseBoat(){}
+HouseBoat::HouseBoat() :
+numEngines(2),
+numRooms(3),
+numLifeJackets(4),
+deckArea(44.4f),
+boatLength(22.f)
+{
+
+}
 
 void HouseBoat::moveBoat( float knotsperGallon, float windknots ) 
 {
@@ -185,11 +195,10 @@ void FieldRecorder::ejectSD( bool ejectButtonPressed )
 
 struct Printer
 {
-    float blackInkAmount = 0.9f;
-    float colorInkAmount = 0.9f;
-    double scanRes = 1000.1013813813;
-    int yearsRemaining = 1;
-    int pageMax = 100;
+    float blackInkAmount, colorInkAmount;
+    double scanRes;
+    int yearsRemaining;
+    int pageMax;
     Printer();
 
     struct Paper
@@ -212,7 +221,7 @@ struct Printer
     Paper jamFreeEdition;
 };
 
-Printer::Printer(){}
+Printer::Printer() : blackInkAmount(.9f), colorInkAmount(.1f), scanRes(1209.235986), yearsRemaining(1), pageMax(45) {}
 
 void Printer::Paper::foldPaper( float foldStartX, float foldStartY, float foldEndX, float foldEndY )
 {
@@ -488,7 +497,8 @@ int main()
     std::cout << "good to go!" << std::endl;
 
     CamperVan sprinter;
-    sprinter.consumeGas(0.f, true);
+    sprinter.consumeGas(1.1f, true);
+    sprinter.popCamperTop(true, 88);
 
     HouseBoat raft;
     raft.moveBoat(.5f, .1f);
