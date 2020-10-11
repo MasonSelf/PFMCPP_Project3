@@ -135,6 +135,26 @@ struct HouseBoat
 {
     int numEngines, numRooms, numLifeJackets;
     float deckArea, boatLength;
+    struct ReturnToShore
+    {
+        int nautMilesRemaining = 1;
+        ReturnToShore( int n ) : nautMilesRemaining(n) {}
+    };
+    ReturnToShore getThereFunction ( int curDistance )
+    {
+        for ( int i = curDistance; i >= 0; i-- )
+        {
+            std::cout << "distance left: " << i << "\n";
+            if (i <= 1 )
+            {
+                std::cout << "slow down, we're getting close" << "\n";
+                return i;
+            }
+        }
+        std::cout << "oh no! We're getting swept out to sea right as we were arriving to shore..." << "\n";
+        return  ReturnToShore{ 1000 };
+    }
+    
     HouseBoat();
 
     void moveBoat( float knotsperGallon, float windknots );
@@ -547,10 +567,11 @@ int main()
 
     std::cout << "Let's add one jerry can to our camper." << std::endl;
     sprinter.numJerryCans = sprinter.addJerryCans(sprinter.numJerryCans, 3);
-    std::cout << "Current number of cans is now: " << sprinter.numJerryCans << std::endl;
+    std::cout << "Current number of cans is now " << sprinter.numJerryCans << std::endl;
 
 
-    // HouseBoat raft;
+    HouseBoat raft;
+    raft.getThereFunction(5);
     // raft.moveBoat(.5f, .1f);
 
     // Printer canon;
