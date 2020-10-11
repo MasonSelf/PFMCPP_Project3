@@ -73,7 +73,7 @@ int main()
 struct CamperVan
 {
     int numSpareTires { 1 };
-    int numJerryCans { 2 };
+    int numJerryCans { 0 };
     int numBumpStickers = { 44 };
     float windshieldBugPercentage { 0.7f };
     int personCapacity { 3 };
@@ -82,6 +82,7 @@ struct CamperVan
     void driveCamper( bool tankHasSomeGas = true );
     void popCamperTop( bool isRaining = false, int outsideTemperature = 70 );
     int consumeGas( float gasRemaining, bool airConditioningOn );
+    int addJerryCans(int curCans, int maxCans);
 };
 
 CamperVan::CamperVan(){}
@@ -113,6 +114,20 @@ int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
     }
     std::cout << "no gas, bro" << std::endl; 
     return 0; 
+}
+
+int CamperVan::addJerryCans(int curCans, int maxCans)
+{
+    while( curCans < maxCans)
+    {
+        curCans += 1;
+        if (curCans >= maxCans)
+            std::cout << "maximum jerry can amount has been reached!" << std::endl;
+            return curCans;
+    }
+    if ( curCans > maxCans)
+        std::cout << "no room for any more cans!\nConsuming a can now to make space..." << std::endl;
+    return curCans - 1;
 }
 
 
@@ -527,15 +542,20 @@ int main()
     std::cout << "good to go!" << std::endl;
 
     CamperVan sprinter;
-    sprinter.consumeGas(1.1f, true);
-    sprinter.popCamperTop(true, 88);
+    // sprinter.consumeGas(1.1f, true);
+    // sprinter.popCamperTop(true, 88);
 
-    HouseBoat raft;
-    raft.moveBoat(.5f, .1f);
+    std::cout << "Let's add one jerry can to our camper." << std::endl;
+    sprinter.numJerryCans = sprinter.addJerryCans(sprinter.numJerryCans, 3);
+    std::cout << "Current number of cans is now: " << sprinter.numJerryCans << std::endl;
 
-    Printer canon;
-    std::cout << "the size of your scan document is " << canon.scanDoc(9.5f, 11.f) << std::endl;
 
-    Park centennial;
-    std::cout << "Are there enough benches for the event? " << (centennial.benchNumChange(20, 100) > 21 ? "Thankfully yes" : "We need a bigger budget for more benches") << "\n";
+    // HouseBoat raft;
+    // raft.moveBoat(.5f, .1f);
+
+    // Printer canon;
+    // std::cout << "the size of your scan document is " << canon.scanDoc(9.5f, 11.f) << std::endl;
+
+    // Park centennial;
+    // std::cout << "Are there enough benches for the event? " << (centennial.benchNumChange(20, 100) > 21 ? "Thankfully yes" : "We need a bigger budget for more benches") << "\n";
 }
