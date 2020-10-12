@@ -23,7 +23,7 @@ Create a branch named Part5
  
  4) use std::cout statements to print out information about what your loops did.
  
- 5) click the [run] button.  Clear up any errors or warnings as best you can.
+ 5) click the [run] button.  Clear up any errors or warnings as best you can.d
  */
 
 #include <iostream>
@@ -121,13 +121,16 @@ int CamperVan::addJerryCans(int curCans, int maxCans)
     while( curCans < maxCans)
     {
         curCans += 1;
-        if (curCans >= maxCans)
-            std::cout << "maximum jerry can amount has been reached!" << std::endl;
+        if (curCans == maxCans)
+        {
+            std::cout << "maximum jerry can amount has been reached!" << std::endl; 
             return curCans;
+        }
     }
-    if ( curCans > maxCans)
-        std::cout << "no room for any more cans!\nConsuming a can now to make space..." << std::endl;
-    return curCans - 1;
+    if ( curCans >= maxCans )
+        std::cout << "There is no room for any more cans!\nConsuming a can now to make space..." << std::endl;
+    curCans -= 1;
+    return curCans;
 }
 
 
@@ -569,11 +572,10 @@ int main()
     sprinter.numJerryCans = sprinter.addJerryCans(sprinter.numJerryCans, 3);
     std::cout << "Current number of cans is now " << sprinter.numJerryCans << std::endl;
 
-
     HouseBoat raft;
     raft.getThereFunction(5);
     raft.getThereFunction(0);
-    
+
     // raft.moveBoat(.5f, .1f);
 
     // Printer canon;
