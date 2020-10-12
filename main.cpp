@@ -23,7 +23,7 @@ Create a branch named Part5
  
  4) use std::cout statements to print out information about what your loops did.
  
- 5) click the [run] button.  Clear up any errors or warnings as best you can.
+ 5) click the [run] button.  Clear up any errors or warnings as best you can.d
  */
 
 #include <iostream>
@@ -73,7 +73,7 @@ int main()
 struct CamperVan
 {
     int numSpareTires { 1 };
-    int numJerryCans { 2 };
+    int numJerryCans { 0 };
     int numBumpStickers = { 44 };
     float windshieldBugPercentage { 0.7f };
     int personCapacity { 3 };
@@ -82,6 +82,7 @@ struct CamperVan
     void driveCamper( bool tankHasSomeGas = true );
     void popCamperTop( bool isRaining = false, int outsideTemperature = 70 );
     int consumeGas( float gasRemaining, bool airConditioningOn );
+    int addJerryCans(int curCans, int maxCans);
 };
 
 CamperVan::CamperVan(){}
@@ -115,11 +116,48 @@ int CamperVan::consumeGas( float gasRemaining, bool airConditioningOn )
     return 0; 
 }
 
+int CamperVan::addJerryCans(int curCans, int maxCans)
+{
+    while( curCans < maxCans)
+    {
+        curCans += 1;
+        if (curCans == maxCans)
+        {
+            std::cout << "maximum jerry can amount has been reached!" << std::endl; 
+            return curCans;
+        }
+    }
+    if ( curCans >= maxCans )
+        std::cout << "There is no room for any more cans!\nConsuming a can now to make space..." << std::endl;
+    curCans -= 1;
+    return curCans;
+}
+
 
 struct HouseBoat
 {
     int numEngines, numRooms, numLifeJackets;
     float deckArea, boatLength;
+    struct ReturnToShore
+    {
+        int nautMilesRemaining = 1;
+        ReturnToShore( int n ) : nautMilesRemaining(n) {}
+    };
+    ReturnToShore getThereFunction ( int curDistance )
+    {
+        for ( int i = curDistance; i > 0; i-- )
+        {
+            std::cout << "distance left: " << i << "\n";
+            if (i <= 1 )
+            {
+                std::cout << "slow down, we're getting close" << "\n";
+                return i;
+            }
+        }
+        std::cout << "oh no! We're getting swept out to sea right as we were arriving to shore..." << "\n";
+        return  ReturnToShore{ 1000 };
+    }
+    
     HouseBoat();
 
     void moveBoat( float knotsperGallon, float windknots );
@@ -527,15 +565,22 @@ int main()
     std::cout << "good to go!" << std::endl;
 
     CamperVan sprinter;
-    sprinter.consumeGas(1.1f, true);
-    sprinter.popCamperTop(true, 88);
+    // sprinter.consumeGas(1.1f, true);
+    // sprinter.popCamperTop(true, 88);
+
+    std::cout << "Let's add one jerry can to our camper." << std::endl;
+    sprinter.numJerryCans = sprinter.addJerryCans(sprinter.numJerryCans, 3);
+    std::cout << "Current number of cans is now " << sprinter.numJerryCans << std::endl;
 
     HouseBoat raft;
-    raft.moveBoat(.5f, .1f);
+    raft.getThereFunction(5);
+    raft.getThereFunction(0);
 
-    Printer canon;
-    std::cout << "the size of your scan document is " << canon.scanDoc(9.5f, 11.f) << std::endl;
+    // raft.moveBoat(.5f, .1f);
 
-    Park centennial;
-    std::cout << "Are there enough benches for the event? " << (centennial.benchNumChange(20, 100) > 21 ? "Thankfully yes" : "We need a bigger budget for more benches") << "\n";
+    // Printer canon;
+    // std::cout << "the size of your scan document is " << canon.scanDoc(9.5f, 11.f) << std::endl;
+
+    // Park centennial;
+    // std::cout << "Are there enough benches for the event? " << (centennial.benchNumChange(20, 100) > 21 ? "Thankfully yes" : "We need a bigger budget for more benches") << "\n";
 }
